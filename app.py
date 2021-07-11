@@ -57,7 +57,19 @@ def add_book():
 @app.route('/search-book', methods =['POST','GET'])
 def search_book():
     form = Books()
-    return render_template('search_book.html')
+    bookList = BooksModel.query.order_by(BooksModel.title).all()
+    authorList = BooksModel.query.order_by(BooksModel.author).all()
+    show = False
+    result =  None
+    if request.method == 'POST':
+        show = True
+        result = None
+        result = BooksModel.query.filter_by(title=request.form['title']).first()
+        print(result)
+        if result == None:
+            result = BooksModel.query.filter_by(author=request.form['authors']).first()
+        
+    return render_template('search_book.html', form=form, bookList = bookList, authorList=authorList,result=result, show=show)
 
 
 
