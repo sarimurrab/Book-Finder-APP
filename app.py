@@ -6,6 +6,7 @@ from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 from wtforms.fields.core import FormField
 from views import Books
+import secrets
 
 
 # initialize the Flask app
@@ -15,7 +16,7 @@ app = Flask(__name__)
 basedir = os.path.abspath(os.path.dirname(__file__))
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'books.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SECRET_KEY'] = "mysecret"
+app.config['SECRET_KEY'] = secrets.token_hex(16)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
@@ -84,6 +85,10 @@ def delete(title):
     db.session.commit()
     bookList = BooksModel.query.order_by(BooksModel.title).all()
     return render_template('list_of_all.html', bookList=bookList)
+
+@app.route('/about')
+def about():
+    return render_template('about.html')
 
 if __name__ == "__main__":
     db.create_all()
