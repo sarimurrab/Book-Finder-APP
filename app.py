@@ -71,7 +71,10 @@ def search_book():
         
     return render_template('search_book.html', form=form, bookList = bookList, authorList=authorList,result=result, show=show)
 
-
+@app.route('/list-of-all')
+def list_of_all():
+    bookList = BooksModel.query.order_by(BooksModel.title).all()
+    return render_template('list_of_all.html', bookList=bookList)
 
 if __name__ == "__main__":
     db.create_all()
