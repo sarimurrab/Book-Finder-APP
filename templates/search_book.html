@@ -51,6 +51,9 @@
 <h6>Book Title : {{result.title}}</h6>
 <h6>Book Author : {{result.author}}</h6>
 <h6>Book Published on : {{result.published_date}}</h6>
+
+<br>
+<h6 ><a style="color: red; text-decoration: none;" href="{{url_for('delete',title= result.title)}}">Delete this book</a></h6>
 {%else%}
 <h6 style="color: Red;">No Book Found</h6>
 {%endif%}
