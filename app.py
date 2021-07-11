@@ -46,9 +46,10 @@ def index():
 def add_book():
     form = Books()
     if request.method == 'POST':
-        book=BooksModel(request.form['title'], request.form['author'], request.form['published_on'])
+        book=BooksModel(request.form['title'].capitalize(), request.form['author'].capitalize(), request.form['published_on'])
         db.session.add(book)
         db.session.commit()
+        return render_template('after_add_book.html')
     return render_template('add_book.html', form=form)
 
 
