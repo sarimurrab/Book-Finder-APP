@@ -4,6 +4,8 @@ from flask import Flask, render_template, request, redirect, url_for
 from flask.helpers import url_for
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
+from wtforms.fields.core import FormField
+from views import Books
 
 
 # initialize the Flask app
@@ -37,7 +39,7 @@ class BooksModel(db.Model):
 # Application routes
 @app.route('/')
 def index():
-    return "Starter Page"
+    return render_template("index.html")
 
 
 if __name__ == "__main__":
