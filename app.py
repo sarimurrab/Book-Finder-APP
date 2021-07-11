@@ -17,7 +17,24 @@ app.config['SECRET_KEY'] = "mysecret"
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
-# application route
+# Models
+class BooksModel(db.Model):
+    __tablename__ = "books"
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(100), nullable=False)
+    author = db.Column(db.String(100), nullable=False)
+    published_date = db.Column(db.String(100), nullable=False)
+
+    def __init__(self, title, author, published_date):
+        self.title = title
+        self.author = author
+        self.published_date = published_date
+
+    def __repr__(self):
+        return f"{self.id},{self.title},{self.author},{self.published_date}"
+
+
+# Application routes
 @app.route('/')
 def index():
     return "Starter Page"
