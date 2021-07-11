@@ -1,0 +1,27 @@
+{%extends "base.html"%} {%block body%}
+<h3>Add a book to Library</h3>
+<br>
+
+<form method="post">
+  {{ form.hidden_tag() }}
+  <table>
+    <tr>
+        <td><h6>Title of book</h6></td>
+        <td><input name="title" type="text" required></td>
+    </tr>
+    <tr>
+      <td><h6>Author name</h6></td>
+      <td><input name="author" type="text" required></td>
+    </tr>
+    <tr>
+        <td><h6>Published date</h6></td>
+        <td><input name="published_on" type="date" required></td>
+    </tr>
+    <tr>
+        <td></td>
+      <td> <input type="submit" value="Add Book"></td>
+    </tr>
+  </table>
+</form>
+
+{%endblock%}

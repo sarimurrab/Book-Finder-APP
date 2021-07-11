@@ -42,6 +42,12 @@ def index():
     return render_template("index.html")
 
 
-if __name__ == "__main__":
+@app.route('/add-book', methods =['POST','GET'])
+def add_book():
+    form = Books()
+    return render_template('add_book.html', form=form)
 
+
+if __name__ == "__main__":
+    db.create_all()
     app.run(debug=True)
