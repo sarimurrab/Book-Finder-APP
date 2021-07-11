@@ -8,7 +8,15 @@
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>{% block title %}{% endblock %}</title>
-
+    <style>
+      
+      body{
+        align-content: center;
+        background-image: url(https://t4.ftcdn.net/jpg/01/62/68/21/360_F_162682117_szCd1KqcSF7xHJGQEDVcBnKB3Z0T8X9r.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+    </style>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -16,15 +24,17 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-        <a class="navbar-brand" href="#">Book Finder</a>
+        <a class="navbar-brand" href="{{url_for('index')}}">Book Finder</a>
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Add Book</a>
+            <a class="nav-link" href="{{url_for('add_book')}}">Add Book</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Search Book</a>
+            <a class="nav-link" href="{{url_for('search_book')}}">Search Book</a>
           </li>
-
+          <li class="nav-item">
+            <a class="nav-link" href="{{url_for('list_of_all')}}">All Books</a>
+          </li>
         </ul>
         
       </div>
