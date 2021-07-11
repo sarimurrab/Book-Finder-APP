@@ -53,6 +53,14 @@ def add_book():
     return render_template('add_book.html', form=form)
 
 
+
+@app.route('/search-book', methods =['POST','GET'])
+def search_book():
+    form = Books()
+    return render_template('search_book.html')
+
+
+
 if __name__ == "__main__":
     db.create_all()
     app.run(debug=True)

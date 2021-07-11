@@ -1,0 +1,28 @@
+{%extends "base.html"%} {%block body%}
+<h3>Search a book</h3>
+<br>
+<form method="post">
+  {{ form.hidden_tag() }}
+  <table>
+    <tr>
+        <td><h6>Search by title</h6></td>
+        
+    </tr>
+    <tr>
+      <td></td>
+      <td>OR</td>
+    </tr>
+    <tr>
+      <td><h6>Search by author</h6></td>
+      
+
+    
+      
+    </tr>
+
+    <tr>
+        <td></td>
+      <td> <input type="submit" value="Search Book"></td>
+    </tr>
+  </table>
+</form>
