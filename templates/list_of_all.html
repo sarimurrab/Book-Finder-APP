@@ -3,9 +3,17 @@
 <br>
 <ol>
   {%for book in bookList%}
-
+  <table>
+    <tr>
+      <td>
   <li><strong>{{book.title}} </strong>, by {{book.author}}, published on {{book.published_date}}</li>
-
+      </td>
+      <td>
+        
+        <a href="{{url_for('delete',title= book.title)}}">&#10008;</a>
+      </td>
+    </tr>
+  </table>
   {%endfor%}
 </ol>
 

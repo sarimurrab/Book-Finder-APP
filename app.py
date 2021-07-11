@@ -76,6 +76,15 @@ def list_of_all():
     bookList = BooksModel.query.order_by(BooksModel.title).all()
     return render_template('list_of_all.html', bookList=bookList)
 
+
+@app.route('/delete/<title>')
+def delete(title):
+    book = BooksModel.query.filter_by(title= title).first()
+    db.session.delete(book)
+    db.session.commit()
+    bookList = BooksModel.query.order_by(BooksModel.title).all()
+    return render_template('list_of_all.html', bookList=bookList)
+
 if __name__ == "__main__":
     db.create_all()
     app.run(debug=True)
