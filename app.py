@@ -45,6 +45,10 @@ def index():
 @app.route('/add-book', methods =['POST','GET'])
 def add_book():
     form = Books()
+    if request.method == 'POST':
+        book=BooksModel(request.form['title'], request.form['author'], request.form['published_on'])
+        db.session.add(book)
+        db.session.commit()
     return render_template('add_book.html', form=form)
 
 
